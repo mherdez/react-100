@@ -1,22 +1,16 @@
-import { useState } from 'react';
+const Answer = ( {respuesta, showMe } ) => {
 
-const Answer = ( {respuesta} ) => {
+  const { answer, points, show, id } = respuesta;
 
-
-  const [ showAnswer, setShowAnswer ] = useState(false)
-  const { answer, points } = respuesta;
-
-  const toggleShow = () => {
-    setShowAnswer( !showAnswer );
-  }
+  const toggleShow = () => showMe(id);
 
   return (
     <div onClick={ toggleShow } className="answer">
       <div id='answer1' className="answer-text">
-        { showAnswer ? answer : null }
+        { show ? answer : null }
       </div>
-      <div id="points1" className={ showAnswer ? 'answer-points' : '' }>
-        { showAnswer ? points : null }
+      <div id="points1" className={ show ? 'answer-points' : '' }>
+        { show ? points : null }
       </div>
     </div>
   );
